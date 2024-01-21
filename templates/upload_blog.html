@@ -1,0 +1,152 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %} Blogs | {{block.super}} {% endblock %}
+
+{% block content %}
+
+<style>
+    .back-image{
+    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOeRsWR2dkLjeRdG1UZa4s3UzUZwO2ELY-Fg&usqp=CAU);
+      background-size: cover;
+      background-position: center;
+    }
+<!--    .bg-image {-->
+<!--      background-image: url(https://i.postimg.cc/Pq2fJrXw/bg00.jpg);-->
+<!--      background-size: cover;-->
+<!--      background-position: center;-->
+<!--    }-->
+    .backdrop {
+      backdrop-filter: blur(5px);
+    }
+    .text-shadow {
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    }
+  </style>
+<!--bg-gray-100-->
+<!--flex-col-->
+<div class="back-image">
+
+    <h1 class="text-white font-bold  text-6xl text-center pt-20 ">Blogs</h1>
+<!-- component -->
+<div class="  py-0 flex  justify-between items-center w-3/4 mx-auto items-end sm:py-12 ">
+     <div class="backdrop w-10/12 md:w-2/4 bg-white bg-opacity-10 rounded p-3 text-white border border-gray-300 shadow-lg">
+        <div class="w-full mb-3 pb-3 border-b border-1 border-white">
+        <h3 class="text-xl font-semibold text-shadow">How To Deal With A Difficult Co-Worker</h3>
+      </div>
+     <div>
+         <iframe width="460" height="215" src="https://www.youtube.com/embed/UiPatVDz_h0?si=RtCBjU1Fzq2NYADf" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+         <p style="-webkit-line-clamp: 3; position: relative; overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; font-size: 16px; font-weight: 400; line-height: 22px; padding-top: 5px; height:48px;">
+          People are different,and that sometimes causes conflict. Part of the process of an evolving professional relationship is understanding
+         </p>
+        <button class=" bg-yellow  border border-yellow px-3 py-1.5 rounded  focus:ring-2 focus:ring-yellow focus:ring-opacity-40 hover:bg-opacity-800 text-lg">
+          <a href="https://extension.msstate.edu/sites/default/files/publications/publications/p3386.pdf">Detail</a>
+        </button>
+      </div>
+     </div>
+	<div class="relative py-3 sm:max-w-xl sm:mr-0">
+
+		<div
+			class="absolute inset-0 bg-gradient-to-r from-blue-300 to-blue-600 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl">
+		</div>
+
+		<div class="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-0 ">
+			<div class="max-w-md mx-auto">
+				<div>
+					<h1 class="text-4xl mx-3 my-0 text-center mb-0 sm:my-2 font-semibold">Upload your Blogs</h1>
+				</div>
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+
+				<div class="divide-y divide-gray-200">
+					<div class="py-4 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-3 mx-4">
+                        <div class="relative">
+							<input autocomplete="off" id="title" name="title" type="text" class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none  px-5 py-1.5 focus:borer-rose-600" placeholder="" />
+							<label for="title" class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 px-3 py-1.5 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Title</label>
+						</div>
+						<div class="relative">
+							<input autocomplete="off" id="description" name="description" type="text" class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none  px-5 py-1.5 focus:borer-rose-600" placeholder="Blog_description 700 words" />
+							<label for="description" class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 px-3 py-1.5 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Description</label>
+						</div>
+						<div class="relative">
+							<input autocomplete="off" id="file" name="file" type="file" class="peer peer px-12 py-1.5 placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600" placeholder="file in pdf" />
+							<label for="file" class="absolute left-0 -top-3.5 text-gray-600 peer px-3 py-1.5 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">File</label>
+						</div>
+                        <div class="relative">
+							<input autocomplete="off" id="date" name="date" type="date" class="peer px-5 py-1.5 placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600" placeholder="" />
+							<label for="date" class="absolute px-3 py-1.5  left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Published Date</label>
+						</div>
+						<div class="relative">
+							<input class="bg-blue-500 px-3 py-3.5 rounded text-white rounded-md px-2 py-1" type="Submit">
+						</div>
+					</div>
+				</div>
+
+
+                </form>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<!-- component -->
+
+  <div class="bg-image w-full  flex flex-wrap justify-center items-center gap-3 py-5">
+    <div class="backdrop w-10/12 md:w-1/4 bg-white bg-opacity-10 rounded p-3 text-white border border-gray-300 shadow-lg">
+      <!-- header -->
+               {% for blog in blogs %}
+      <div class="w-full mb-3 pb-3 border-b border-1 border-white">
+        <h3 class="text-xl font-semibold text-shadow">{{blog.title}}</h3>
+      </div>
+      <!-- body -->
+      <div>
+        <img src="https://i.postimg.cc/SxLx0fHV/bg01.jpg" alt="image1" class="w-full h-48 object-cover mb-2">
+        <p style="-webkit-line-clamp: 3; position: relative; overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; font-size: 16px; font-weight: 400; line-height: 22px; padding-top: 5px; height:48px;">
+          {{blog.description}}
+        </p>
+        <button class="backdrop bg-white bg-opacity-0 border border-white px-3 py-1.5 rounded focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-40 hover:bg-opacity-10 text-lg" onclick="{{blog.document}}">
+          Detail
+        </button>
+      </div>
+        {% endfor %}
+
+    </div>
+
+<!--    <div class="backdrop w-10/12 md:w-1/4 bg-white bg-opacity-10 rounded p-3 text-white border border-white shadow-lg">-->
+<!--      &lt;!&ndash; header &ndash;&gt;-->
+<!--      <div class="w-full mb-3 pb-3 border-b border-1 border-white">-->
+<!--        <h3 class="text-xl font-semibold text-shadow">Something Good</h3>-->
+<!--      </div>-->
+<!--      &lt;!&ndash; body &ndash;&gt;-->
+<!--      <div>-->
+<!--        <img src="https://i.postimg.cc/J4khxLqf/bg02.jpg" alt="image2" class="w-full h-48 object-cover mb-2">-->
+<!--        <p class="mb-3 tracking-wide text-base text-shadow">-->
+<!--          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, omnis.-->
+<!--        </p>-->
+<!--        <button class="backdrop bg-white bg-opacity-0 border border-white px-3 py-1.5 rounded focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-40 hover:bg-opacity-10 text-lg">-->
+<!--          Detail-->
+<!--        </button>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="backdrop w-10/12 md:w-1/4 bg-white bg-opacity-10 rounded p-3 text-white border border-white shadow-lg">-->
+<!--      &lt;!&ndash; header &ndash;&gt;-->
+<!--      <div class="w-full mb-3 pb-3 border-b border-1 border-white">-->
+<!--        <h3 class="text-xl font-semibold text-shadow">Something Good</h3>-->
+<!--      </div>-->
+<!--      &lt;!&ndash; body &ndash;&gt;-->
+<!--      <div>-->
+<!--        <img src="https://i.postimg.cc/VNYLzb8w/bg03.jpg" alt="image3" class="w-full h-48 object-cover mb-2">-->
+<!--        <p class="mb-3 tracking-wide text-base text-shadow">-->
+<!--          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, omnis.-->
+<!--        </p>-->
+<!--        <button class="backdrop bg-white bg-opacity-0 border border-white px-3 py-1.5 rounded focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-40 hover:bg-opacity-10 text-lg">-->
+<!--          Detail-->
+<!--        </button>-->
+<!--      </div>-->
+    </div>
+  </div>
+
+{% endblock %}
